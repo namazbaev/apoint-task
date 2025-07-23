@@ -1,5 +1,5 @@
-import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import type { ApiResponse } from '~/shared/types';
+import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 export const createHttpMethods = (client: AxiosInstance) => {
   const get = async <T = unknown>(
@@ -14,8 +14,8 @@ export const createHttpMethods = (client: AxiosInstance) => {
     url: string,
     data?: unknown,
     config?: AxiosRequestConfig,
-  ): Promise<ApiResponse<T>> => {
-    const response = await client.post<ApiResponse<T>>(url, data, config);
+  ): Promise<T> => {
+    const response = await client.post<T>(url, data, config);
     return response.data;
   };
 
@@ -23,8 +23,8 @@ export const createHttpMethods = (client: AxiosInstance) => {
     url: string,
     data?: unknown,
     config?: AxiosRequestConfig,
-  ): Promise<ApiResponse<T>> => {
-    const response = await client.put<ApiResponse<T>>(url, data, config);
+  ): Promise<T> => {
+    const response = await client.put<T>(url, data, config);
     return response.data;
   };
 

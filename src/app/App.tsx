@@ -1,9 +1,12 @@
-function App() {
-  return (
-    <div className="bg-white flex justify-center items-center h-screen">
-      <h1 className="text-3xl font-bold underline">Vite + React</h1>
-    </div>
-  );
-}
+import React from 'react';
+import { router } from '~/routes';
+import { RouterProvider } from 'react-router-dom';
+import { AppProviders } from './providers/AppProviders';
+
+const App: React.FC = () => (
+  <AppProviders>
+    <RouterProvider router={router} />
+  </AppProviders>
+);
 
 export default App;

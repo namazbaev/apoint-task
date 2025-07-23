@@ -28,3 +28,7 @@
   --color-red-500: #fb3748;
   --color-red-100: #ffd5d8;
 }
+
+body {
+  font-family: 'Inter', sans-serif;
+}
