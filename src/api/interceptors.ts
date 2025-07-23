@@ -9,7 +9,7 @@ export const handleRequest = (config: InternalAxiosRequestConfig) => {
   const token = getAuthToken();
 
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = token;
   }
 
   return config;
