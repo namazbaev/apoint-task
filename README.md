@@ -6,8 +6,6 @@ Ushbu loyiha test loyiha sifatida ishlab chiqildi
 
 ## Qilingan yechimlar
 
-This project is used by the following companies:
-
 - Auth - username va password orqali
 - Virtualization - 1000+ rowlarni optimal render qilish
 - Grouping - ma'lumotlarni parent va child ko'rinishi
