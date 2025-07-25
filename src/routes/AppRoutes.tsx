@@ -2,9 +2,12 @@ import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { RouteGuard } from '~/shared/components/RouteGuard';
 import type { RouteConfig } from '~/shared/types/common.types';
+import { NotFoundPage } from '~/app/pages';
 
 const LoginPage = lazy(() => import('~/features/auth/pages/LoginPage'));
-// const MaterialsPage = lazy(() => import('@/features/materials/pages/MaterialsPage'));
+const MaterialsPage = lazy(
+  () => import('~/features/materials/pages/MaterialsPage'),
+);
 
 // Route definitions with metadata
 const routes: RouteConfig[] = [
@@ -14,12 +17,12 @@ const routes: RouteConfig[] = [
     isProtected: false,
     title: 'Login',
   },
-  // {
-  //   path: '/materials',
-  //   component: 'MaterialsPage',
-  //   isProtected: true,
-  //   title: 'Materials Report',
-  // },
+  {
+    path: '/',
+    component: MaterialsPage,
+    isProtected: true,
+    title: 'Materials Report',
+  },
 ];
 
 // HOC for route creation
@@ -28,16 +31,20 @@ const createRouteElement = (route: RouteConfig) => (
 );
 
 // Create router with optimized config
-export const router = createBrowserRouter(
-  routes.map((route) => ({
+export const router = createBrowserRouter([
+  ...routes.map((route) => ({
     path: route.path,
     element: createRouteElement(route),
-    errorElement: <div>Route Error</div>,
   })),
-);
+
+  {
+    path: '*',
+    element: <NotFoundPage />,
+  },
+]);
 
 // Export route constants
 export const ROUTES = {
   LOGIN: '/login',
-  MATERIALS: '/materials',
+  MATERIALS: '/',
 } as const;
