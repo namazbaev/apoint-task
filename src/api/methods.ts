@@ -5,8 +5,8 @@ export const createHttpMethods = (client: AxiosInstance) => {
   const get = async <T = unknown>(
     url: string,
     config?: AxiosRequestConfig,
-  ): Promise<ApiResponse<T>> => {
-    const response = await client.get<ApiResponse<T>>(url, config);
+  ): Promise<T> => {
+    const response = await client.get<T>(url, config);
     return response.data;
   };
 
